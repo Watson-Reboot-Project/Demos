@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+Watson Reboot Project
+demo/angularjs/index.html
+Tommy Bozeman (tboz203)
+2013/22/21
+
+A demo of some common Angular.js uses. These are pulled almost directly from
+the angularjs.org website.
+-->
+
+<!-- the `html` tag, where we say we're going to be using angular.js (`ng-app`), and -->
+<!-- what app we're going to be using (`='DemoApp'`) -->
+<html ng-app='DemoApp'>
+<head>
+  <meta charset='utf-8' />
+  <title>Angular.js Demo!</title>
+  <!-- including bootstrap here, just so the page doesn't look terrible. won't be -->
+  <!-- using anything complex, or talking about it here -->
+  <link rel='stylesheet' href='lib/css/bootstrap-3.css' type='text/css' />
+  <!-- some css that will be used in the `todo` demo section -->
+  <link rel='stylesheet' href='css/todo.css' type='text/css' />
+</head>
+<body>
+<div class='container'>
+  <h1>Angular.js Demo!</h1>
+  <p>A demo of some common Angular.js uses. These are pulled almost directly from
+  the angularjs.org website.</p>
+  <h2>The Basics</h2>
+  <div id='The Basics' class='well'>
+    <label>Name:</label>
+    <!-- get input from the user and store it as `yourName` -->
+    <input class='input' type="text" ng-model="yourName" placeholder="Enter a name here" />
+    <hr>
+    <!-- echo back the user's name -->
+    <h3>Hello {{yourName}}!</h3>
+  </div>
+  <h2>Todo</h2>
+  <!-- here we're specifying a controller to use, that we create in DemoApp.js -->
+  <div class='well' ng-controller='TodoController'>
+    <span>{{remaining()}} of {{todos.length}} remaining</span>
+    [ <a href="" ng-click="archive()">archive</a> ]
+    <ul>
+      <li ng-repeat="todo in todos">
+        <input class='input' type="checkbox" ng-model="todo.done">
+        <span class="done-{{todo.done}}">{{todo.text}}</span>
+      </li>
+    </ul>
+    <form ng-submit="addTodo()">
+      <input type="text" ng-model="todoText"  size="30" placeholder="add new todo here">
+      <input class="btn-primary" type="submit" value="add">
+    </form>
+  </div>
+  <h2><a href='http://docs.angularjs.org/tutorial/'>Find Out More!</a></h2>
+</div>
+<!-- load up angular.js. this is at the bottom so as to not delay page loading -->
+<script type='text/javascript' src='lib/js/angular.js'></script>
+<!-- load up our application. at the bottom for the same reason -->
+<script type='text/javascript' src='js/DemoApp.js'></script>
+</body>
+</html>

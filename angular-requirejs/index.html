@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+Watson Reboot Project
+demo/angularjs-requirejs/index.html
+Tommy Bozeman (tboz203)
+2013/12/19
+
+A test project, showing off require.js and angular.js together.
+-->
+
+<!-- let everybody know we're going to be using angular. the `TestApp` bit -->
+<!-- specifies the app we're pulling from -->
+<html ng-app='TestApp'>
+<head>
+<meta charset='UTF-8'>
+<title>This Is A Test!</title>
+<link rel='stylesheet' href='lib/css/bootstrap-3.css' type='text/css'>
+</head>
+<body ng-controller='TestController'>
+<div class='container'>
+  <h1>This Is A Test!</h1>
+  <div class='well'>
+    <!-- showing off doing things inside ng-bind -->
+    <div ng-bind='1 + 1'></div>
+    <!-- this one is pulled from the test app! -->
+    <div ng-bind='member'></div>
+    <div ng-bind='"test"'></div>
+    <!-- notice how these flash for a second before getting interpreted? -->
+    <!-- this text is inserted directly into the page, and sits there a second -->
+    <!-- before angular gets to it -->
+    <div>{{2 + 2}}</div>
+    <div>{{string}}</div>
+  </div>
+</div>
+<script type='text/javascript' data-main='js/main' src='lib/js/require.js'></script>
+</body>
+</html>
